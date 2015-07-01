@@ -68,6 +68,7 @@ class PushTest < Test::Unit::TestCase
   def expect_http_request(json)
     response = Net::HTTPOK.new("1.1", 200, "OK")
     response.instance_variable_set(:@body, '{"success":true}')
+    #response.instance_variable_set(:@body, {"success" => true})
     response.instance_variable_set(:@read, true)
     Net::HTTP.any_instance.expects(:request).with do |request|
       assert_equal json, request.body

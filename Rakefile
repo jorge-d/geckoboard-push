@@ -14,7 +14,7 @@ task :default => ["test"]
 spec = Gem::Specification.new do |s|
 
   s.name              = "geckoboard-push"
-  s.version           = "0.1.1"
+  s.version           = "0.1.2"
   s.summary           = "Ruby library for pushing widget updates to Geckoboard."
   s.author            = "Elliott Draper"
   s.email             = "el@kickcode.com"
