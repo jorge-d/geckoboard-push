@@ -94,5 +94,21 @@ module Geckoboard
       opts[:percentage] = "hide" if hide_percentage
       self.push(opts)
     end
+
+    # Items should be an array of hashes, each hash containing:
+    # - text
+    # - label (an optional hash):
+    #   - name (string)
+    #   - color (string, optional)
+    # - description (string, optional)
+    def list items
+      data = items.collect do |item|
+        tmp = {title: {text: item[:text]}}
+        tmp[:label] = item[:label] if item.has_key?(:label)
+        tmp[:description] = item[:description] if item.has_key?(:description)
+        tmp
+      end
+      self.push(data)
+    end
   end
 end

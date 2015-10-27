@@ -65,6 +65,11 @@ class PushTest < Test::Unit::TestCase
     assert_equal true, @push.funnel([{:label => "Test1", :value => 5}, {:label => "Test2", :value => 10}], true, true)
   end
 
+  def test_list
+    expect_http_request({"api_key" => "12345", "data" => [{"title" => { "text" => "abc" }, "label" => { "name" => "def", "color" => "#eeff11" }, "description" => "ghi"}, { "title" => { "text" => "jkl" }, "description" => "mno"}]}.to_json)
+    assert_equal true, @push.list([{:label => {name: "def", color: "#eeff11"}, text: 'abc', description: 'ghi'}, {text: "jkl", :description => 'mno'}])
+  end
+
   def expect_http_request(json)
     response = Net::HTTPOK.new("1.1", 200, "OK")
     response.instance_variable_set(:@body, '{"success":true}')
