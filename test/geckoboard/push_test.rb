@@ -46,13 +46,13 @@ class PushTest < Test::Unit::TestCase
   end
 
   def test_line
-    expect_http_request({"api_key" => "12345", "data" => {"item" => [1,2,3], "settings" => {"axisx" => "x axis", "axisy" => "y axis", "colour" => "ff9900"}}}.to_json)
+    expect_http_request({"api_key" => "12345", "data" => {"item" => [1,2,3], "settings" => {"axisx" => "x axis", "axisy" => "y axis", "color" => "ff9900"}}}.to_json)
     assert_equal true, @push.line([1,2,3], "ff9900", "x axis", "y axis")
   end
 
   def test_pie
-    expect_http_request({"api_key" => "12345", "data" => {"item" => [{"value" => 1, "label" => "Test1", "colour" => "ff9900"}, {"value" => 2, "label" => "Test2", "colour" => "ff0099"}]}}.to_json)
-    assert_equal true, @push.pie([{:value => 1, :label => "Test1", :colour => "ff9900"}, {:value => 2, :label => "Test2", :colour => "ff0099"}])
+    expect_http_request({"api_key" => "12345", "data" => {"item" => [{"value" => 1, "label" => "Test1", "color" => "ff9900"}, {"value" => 2, "label" => "Test2", "color" => "ff0099"}]}}.to_json)
+    assert_equal true, @push.pie([{:value => 1, :label => "Test1", :color => "ff9900"}, {:value => 2, :label => "Test2", :color => "ff0099"}])
   end
 
   def test_geckometer

@@ -61,16 +61,16 @@ module Geckoboard
     # Values should be an array of numeric values
     # Colour, x_axis and y_axis are optional settings
     def line(values, colour = nil, x_axis = nil, y_axis = nil)
-      self.push(:item => values, :settings => {:axisx => x_axis, :axisy => y_axis, :colour => colour})
+      self.push(:item => values, :settings => {:axisx => x_axis, :axisy => y_axis, :color => colour})
     end
 
     # Items should be an array of hashes, each hash containing:
     # - value (numeric value)
     # - label (optional)
-    # - colour (optional)
+    # - color (optional)
     def pie(items)
       data = items.collect do |item|
-        {:value => item[:value], :label => item[:label], :colour => item[:colour]}
+        {:value => item[:value], :label => item[:label], :color => item[:color]}
       end
       self.push(:item => data)
     end
